@@ -11,8 +11,19 @@ const saltRounds = 10;
 const app = express()
 
 
-mongoose.set("strictQuery", false);
-mongoose.connect('mongodb://127.0.0.1:27017/VenueEase', { useNewUrlParser: true });
+
+
+  //.env variables
+  const PORT = process.env.PORT;
+  const Pass_Key = process.env.PASS_KEY;
+  const user_id = process.env.USER_ID;
+  
+  
+  
+  const URL = `mongodb+srv://${user_id}:${encodeURIComponent(Pass_Key)}@cluster0.sbpkrhp.mongodb.net/`;
+
+  mongoose.set("strictQuery", false);
+  mongoose.connect(URL, { useNewUrlParser: true });
 
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs')  
@@ -821,7 +832,7 @@ app.get('/data', (req, res) => {
 
 
 
-app.listen(4000,(err)=>{
+app.listen(PORT||4000,(err)=>{
     if(err)
         console.log("err");
     else
