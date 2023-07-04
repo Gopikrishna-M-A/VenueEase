@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>booking</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/booking.css">
+    <link rel="stylesheet" href="/css/calender.css">
+</head>
+<body>
+  <div class="container">
+
+    <%- include('./temp.ejs') %>
+
+
+
+        <div class="main-body">
+
+            <div class="booking-left-section">
+
+
+              
+                <div class="calender">
+                    <div class="wrapper">
+                        <header>
+                          <p id="current-date" class="current-date"></p>
+                          <div class="icons">                      
+                            <span id="prev" class="material-symbols-rounded"><i class="fa-solid fa-angle-left"></i></span>
+                            <span id="next" class="material-symbols-rounded"><i class="fa-solid fa-angle-right"></i></span>
+                          </div>
+                        </header>
+                        <div class="calendar">
+                          <ul class="weeks">
+                            <li>Sun</li>
+                            <li>Mon</li>
+                            <li>Tue</li>
+                            <li>Wed</li>
+                            <li>Thu</li>
+                            <li>Fri</li>
+                            <li>Sat</li>
+                          </ul>
+                          <ul id="days" class="days"></ul>
+                        </div>
+                      </div>
+                </div>
+                
+
+                <form class="options"  action="/booking" method="post">
+                  <div class="options-wrapper">
+                    <div id="optionsTop" class="options-top">
+
+                     <!-- dynamically created -->
+                    
+                  
+                    </div>
+
+
+
+
+                    <div class="options-bottom">
+                      <div class="opt-inputs">
+                          <div class="vname-field">
+                            <div class="vname">
+                              <label for="eventName">Event name</label>
+                              <input required id="eventName" name="eventName" type="text">
+                            </div>
+                            <div class="vtype">
+                              <label for="type">type</label>
+                              <select class="type" name="type" id="type">
+                                <option value="meeting">meeting</option>
+                                <option value="hackathon">hackathon</option>
+                                <option value="other">other</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="desc-field">
+                            <label for="desc">Event desc</label>
+                            <textarea required name="desc" id="desc" rows="5"></textarea> 
+                          </div>
+
+                          
+
+                          <input required name="venueId" value=<%= reservations[0].venueId._id %> type="text" class="hide">
+                        
+                          <button class="booking-btn btn" type="submit">Book Venue</button>
+
+                          </div> 
+                    </div>
+
+
+
+
+                  </div>
+                </form>
+
+
+
+
+
+            </div>
+            <div class="booking-right-section">
+              <div class="booking-right-wrapper">
+
+                  <div class="booking-right-head">
+
+                    <div class="booking-right-head-day">
+                      <h3 class="head-name"><%= reservations[0].venueId.name %> (<%= reservations[0].venueId.location %>)</h3>
+                      <h3 class="head-adm-name">Admin : <%= reservations[0].venueId.venueAdmin.name %></h3>
+                      <h1>RESERVATIONS</h1>
+                    </div>
+                
+                  </div>
+
+                  <div class="booking-right-body">
+                    <div class="booking-right-body-day">
+
+                      
+                        
+                        <% reservations.forEach(function(reservation) { %>
+                          <div class="right-body-card">
+
+                            <div class="right-body-card-head <%= reservation.status %>"></div>
+
+                            <div class="right-body-card-body">
+                                <p>Owner Name: <%= reservation.userId.name %></p>
+                                <p>Event Name: <%= reservation.eventName %></p>
+                                <p>Event Description: <%= reservation.eventDesc %></p>
+                                <% reservation.dateTime.forEach(function(time) { %>
+                                  <p> <%= time.startDate.toLocaleDateString([], { weekday: 'long', month: 'long', day: 'numeric' }) %><br>Timing: <%= time.startDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) %> - <%= time.endDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) %></p>
+                                <% }); %>
+                                <p>Event Type: <%= reservation.eventType %></p>
+                                <p>Event status: <%= reservation.status %></p>
+                                
+                            </div>
+
+                          </div>
+                        <% }); %>
+                        
+                
+                      
+                      
+
+                    </div>
+                   
+                  </div>
+              </div>
+            </div>
+               
+        </div>
+
+    </div>
+
+
+  </div>
+  <script src="/javascript/calender.js"></script>
+  <script src="/javascript/booking.js"></script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>student</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/faculty.css">
+</head>
+<body>
+  <div class="container">
+
+    <%- include('./temp.ejs') %>
+
+
+    
+        <div class="main-body">
+
+            <div class="accepted-events">
+                <div class="sec-head">PENDING</div>
+                <div class="sec-body">
+
+                   <%  pendingReservations.forEach((reservation) => { %> 
+
+                    <div class="card">
+                        <div class="card-details">
+                            <div class="card-c-colors">
+                            <div class="card-d red"></div>
+                            <div class="card-d yellow"></div>
+                            <div class="card-d green"></div>
+                            </div>
+                            <div class="card-options"><i class="icon fa-solid fa-lg fa-ellipsis"></i></div>
+                        </div>
+                        <div class="info card-img hide"></div>
+                        <div class="info card-event-name"><%= reservation.eventName %></div>
+                        <div class="info card-event-desc"><%= reservation.eventDesc %></div>
+                       <div class="info type-wrapper"> 
+                            <div class="card-venue"><%= reservation.venueName %></div>
+                            <div class="card-event-type"><%= reservation.eventType %></div>
+                       </div>
+                 
+                        <div class="info dates">
+                            <%  reservation.dateTime.forEach((date) => { %> 
+                            <div class="day"><%= date.startDate %></div>
+                            <%  });     %> 
+                        </div>
+                        <div class="status"></div>
+
+                        <div class="card-info">
+                            <div class="card-info-img"></div>
+                            <div class="card-info-icons">
+                                <i class="icon fa-solid fa-message"></i> <span class="card-info-msg-count">16</span>
+                                <i class="icon fa-solid fa-paperclip"></i> <span class="card-info-attach-count">4</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <%  }); %> 
+
+                 
+                
+                </div>
+            </div>
+
+
+            <div class="rejected-events">
+                <div class="sec-head">ACCEPTED</div>
+                <div class="sec-body">
+
+                    <%  acceptedReservations.forEach((reservation) => { %> 
+
+                        <div class="card">
+                            <div class="card-details">
+                                <div class="card-c-colors">
+                                <div class="card-d red"></div>
+                                <div class="card-d yellow"></div>
+                                <div class="card-d green"></div>
+                                </div>
+                                <button id="deleteBtn"  onclick="deleteReservation('<%= reservation._id %>')" class="card-options"><i class="fa-solid fa-eraser" style="color: #a7a0ec;"></i></button>
+                            </div>
+                            <div class="info card-img hide"></div>
+                            <div class="info card-event-name"><%= reservation.eventName %></div>
+                            <div class="info card-event-desc"><%= reservation.eventDesc %></div>
+                           <div class="info type-wrapper"> 
+                                <div class="card-venue"><%= reservation.venueName %></div>
+                                <div class="card-event-type"><%= reservation.eventType %></div>
+                           </div>
+                     
+                            <div class="info dates">
+                                <%  reservation.dateTime.forEach((date) => { %> 
+                                <div class="day"><%= date.startDate %></div>
+                                <%  });     %> 
+                            </div>
+                            <div class="status"></div>
+    
+                            <div class="card-info">
+                                <div class="card-info-img"></div>
+                                <div class="card-info-icons">
+                                    <i class="icon fa-solid fa-message"></i> <span class="card-info-msg-count">16</span>
+                                    <i class="icon fa-solid fa-paperclip"></i> <span class="card-info-attach-count">4</span>
+                                </div>
+                            </div>
+                        </div>
+    
+    
+                        <%  }); %> 
+                    
+
+                </div>
+            </div>
+
+
+            <div class="ongoing-events">
+                <div class="sec-head">REJECTED</div>
+                <div class="sec-body">
+
+                    <%  rejectedReservations.forEach((reservation) => { %> 
+
+                        <div class="card">
+                            <div class="card-details">
+                                <div class="card-c-colors">
+                                <div class="card-d red"></div>
+                                <div class="card-d yellow"></div>
+                                <div class="card-d green"></div>
+                                </div>
+                                <div class="card-options"><i class="icon fa-solid fa-lg fa-ellipsis"></i></div>
+                            </div>
+                            <div class="info card-img hide"></div>
+                            <div class="info card-event-name"><%= reservation.eventName %></div>
+                            <div class="info card-event-desc"><%= reservation.eventDesc %></div>
+                           <div class="info type-wrapper"> 
+                                <div class="card-venue"><%= reservation.venueName %></div>
+                                <div class="card-event-type"><%= reservation.eventType %></div>
+                           </div>
+                     
+                            <div class="info dates">
+                                <%  reservation.dateTime.forEach((date) => { %> 
+                                <div class="day"><%= date.startDate %></div>
+                                <%  });     %> 
+                            </div>
+                            <div class="status"></div>
+    
+                            <div class="card-info">
+                                <div class="card-info-img"></div>
+                                <div class="card-info-icons">
+                                    <i class="icon fa-solid fa-message"></i> <span class="card-info-msg-count">16</span>
+                                    <i class="icon fa-solid fa-paperclip"></i> <span class="card-info-attach-count">4</span>
+                                </div>
+                            </div>
+                        </div>
+    
+    
+                        <%  }); %> 
+
+                </div>
+            </div>
+               
+        </div>
+
+    </div>
+
+
+  </div>
+  <script src="/javascript/delete.js"></script>
+</body>
+</html>

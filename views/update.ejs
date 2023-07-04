@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>update</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/update.css">
+</head>
+<body>
+  <div class="container">
+
+    <%- include('./temp.ejs') %>
+
+
+
+        <div class="main-body">
+
+            <div class="update-wrapper">
+
+                <form method="post" action="/update/add" class="update-section">
+                    <div class="heading">ADD VENUE</div>
+                  
+                    <div class="input-field">
+                        <!-- <div class="select-venue field">
+                            <label for="venue">Venue</label>
+    
+                            <select class="venue" name="venue" id="venue">
+                                <% venues.forEach((venue)=>{ %>
+                                    <option disabled value=<%=venue._id%> > <%=venue.name%> </option> 
+                                   <%})%>
+                            </select>
+                        </div> -->
+
+                        <div class="name field">
+                            <label for="vname">venue name</label>
+                            <input name="name" id="vname" type="text">
+                        </div>
+
+                        <div class="location field">
+                            <label for="location">venue location</label>
+                            <input name="location" id="location" type="text">
+                        </div>
+
+                        <div class="admin field">
+                            <label for="admin">venue admin</label>
+                            <select class="admin" name="admin" id="admin">
+                              <% faculty.forEach((fac)=>{ %>
+                                 <option value=<%=fac._id%> > <%=fac.name%> </option> 
+                                <%})%>
+                                
+                              </select>
+                        </div>
+
+                        <div class="para field">
+                            <label for="vpara">venue desc</label>
+                            <input name="para" id="vpara" type="text">
+                        </div>
+
+                        <div class="capacity field">
+                            <label for="capacity">capacity</label>
+                            <input name="capacity" id="capacity" type="text">
+                        </div>
+
+                        <div class="date field">
+
+                            <div class="start-time">
+                                <label for="sdate">start</label>
+                                <select class="sdate" name="sdate" id="sdate">
+                                        <option value="MON"> MON </option> 
+                                        <option value="TUE"> TUE </option> 
+                                        <option value="WED"> WED </option> 
+                                        <option value="THU"> THU </option> 
+                                        <option value="FRI"> FRI </option> 
+                                        <option value="SAT"> SAT </option> 
+                                        <option value="SUN"> SUN </option> 
+                                  </select>
+                            </div>
+
+                            <div class="end-time">  
+                                <label for="edate">end</label>
+                                <select class="edate" name="edate" id="edate">
+                                    <option value="SUN"> SUN </option> 
+                                    <option value="MON"> MON </option> 
+                                    <option value="TUE"> TUE </option> 
+                                    <option value="WED"> WED </option> 
+                                    <option value="THU"> THU </option> 
+                                    <option value="FRI"> FRI </option> 
+                                    <option value="SAT"> SAT </option> 
+                              </select>
+                            </div>
+                        
+                        </div>
+
+                        <div class="time field">
+
+                            <div class="start-time">
+                                <label for="stime">start</label>
+                                <input name="stime" id="stime" type="time">
+                            </div>
+
+                            <div class="end-time">  
+                                <label for="etime">end</label>
+                                <input name="etime" id="etime" type="time">
+                            </div>
+                        
+                        </div>
+
+
+                        <div class="amenities">
+                            <div class="amenity">
+                                <label for="wifi">Wifi</label>
+                                <input value="Wifi"  type="checkbox" name="amenity" id="wifi">
+                            </div>
+                            <div class="amenity">
+                                <label for="Projector">Projector</label>
+                                <input value="Projector" type="checkbox" name="amenity" id="Projector">
+                            </div>
+                            <div class="amenity">
+                                <label for="AC">AC</label>
+                                <input value="AC" type="checkbox" name="amenity" id="AC">
+                            </div>
+                            <div class="amenity">
+                                <label for="whiteboard">whiteboard</label>
+                                <input value="whiteboard" type="checkbox" name="amenity" id="whiteboard">
+                            </div>
+                            <div class="amenity">
+                                <label for="lighting">lighting</label>
+                                <input value="lighting" type="checkbox" name="amenity" id="lighting">
+                            </div>
+                            <div class="amenity">
+                                <label for="Restrooms">Restrooms</label>
+                                <input value="Restrooms" type="checkbox" name="amenity" id="Restrooms">
+                            </div>
+                            <div class="amenity">
+                                <label for="audio">audio</label>
+                                <input value="audio" type="checkbox" name="amenity" id="audio">
+                            </div>
+                            <div class="amenity">
+                                <label for="table">table</label>
+                                <input value="table" type="checkbox" name="amenity" id="table">
+                            </div>
+                            <div class="amenity">
+                                <label for="chair">chair</label>
+                                <input value="chair" type="checkbox" name="amenity" id="chair">
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                    <button type="submit"  class="add-btn btn">ADD VENUE</button>
+                </form>
+               
+
+
+                <form method="post" action="/update/edit" class="update-section">
+                    <div class="heading">EDIT VENUE</div>
+                    <div class="input-field">
+                        <div class="select-venue field">
+                            <label for="Evenue">Venue</label>
+    
+                            <select class="venue" name="venue" id="Evenue">
+                                <% venues.forEach((venue)=>{ %>
+                                    <option value=<%=venue._id%> > <%=venue.name%> </option> 
+                                   <%})%>
+                            </select>
+                        </div>
+
+                        <div class="name field">
+                            <label for="evname">venue name</label>
+                            <input name="name" id="evname" type="text">
+                        </div>
+
+                        <div class="location field">
+                            <label for="elocation">venue location</label>
+                            <input name="location" id="elocation" type="text">
+                        </div>
+
+                        <div class="admin field">
+                            <label for="admin">venue admin</label>
+                            <select class="admin" name="admin" id="admin">
+                                <% faculty.forEach((fac)=>{ %>
+                                    <option value=<%=fac._id%> > <%=fac.name%> </option> 
+                                   <%})%>
+                              </select>
+                        </div>
+
+                        <div class="para field">
+                            <label for="evpara">venue desc</label>
+                            <input name="para" id="evpara" type="text">
+                        </div>
+
+                        <div class="capacity field">
+                            <label for="ecapacity">capacity</label>
+                            <input name="capacity" id="ecapacity" type="text">
+                        </div>
+
+                        <div class="date field">
+
+                            <div class="start-time">
+                                <label for="sdate">start</label>
+                                <select class="sdate" name="sdate" id="sdate">
+                                        <option value="MON"> MON </option> 
+                                        <option value="TUE"> TUE </option> 
+                                        <option value="WED"> WED </option> 
+                                        <option value="THU"> THU </option> 
+                                        <option value="FRI"> FRI </option> 
+                                        <option value="SAT"> SAT </option> 
+                                        <option value="SUN"> SUN </option> 
+                                  </select>
+                            </div>
+
+                            <div class="end-time">  
+                                <label for="edate">end</label>
+                                <select class="edate" name="edate" id="edate">
+                                    <option value="SUN"> SUN </option> 
+                                    <option value="MON"> MON </option> 
+                                    <option value="TUE"> TUE </option> 
+                                    <option value="WED"> WED </option> 
+                                    <option value="THU"> THU </option> 
+                                    <option value="FRI"> FRI </option> 
+                                    <option value="SAT"> SAT </option> 
+                              </select>
+                            </div>
+                        
+                        </div>
+
+                        <div class="time field">
+
+                            <div class="start-time">
+                                <label for="stime">start</label>
+                                <input name="stime" id="stime" type="time">
+                            </div>
+
+                            <div class="end-time">  
+                                <label for="etime">end</label>
+                                <input name="etime" id="etime" type="time">
+                            </div>
+                        
+                        </div>
+
+
+                        <div class="amenities">
+                            <div class="amenity">
+                                <label for="wifi">Wifi</label>
+                                <input value="Wifi"  type="checkbox" name="amenity" id="wifi">
+                            </div>
+                            <div class="amenity">
+                                <label for="Projector">Projector</label>
+                                <input value="Projector" type="checkbox" name="amenity" id="Projector">
+                            </div>
+                            <div class="amenity">
+                                <label for="AC">AC</label>
+                                <input value="AC" type="checkbox" name="amenity" id="AC">
+                            </div>
+                            <div class="amenity">
+                                <label for="whiteboard">whiteboard</label>
+                                <input value="whiteboard" type="checkbox" name="amenity" id="whiteboard">
+                            </div>
+                            <div class="amenity">
+                                <label for="lighting">lighting</label>
+                                <input value="lighting" type="checkbox" name="amenity" id="lighting">
+                            </div>
+                            <div class="amenity">
+                                <label for="Restrooms">Restrooms</label>
+                                <input value="Restrooms" type="checkbox" name="amenity" id="Restrooms">
+                            </div>
+                            <div class="amenity">
+                                <label for="audio">audio</label>
+                                <input value="audio" type="checkbox" name="amenity" id="audio">
+                            </div>
+                            <div class="amenity">
+                                <label for="table">table</label>
+                                <input value="table" type="checkbox" name="amenity" id="table">
+                            </div>
+                            <div class="amenity">
+                                <label for="chair">chair</label>
+                                <input value="chair" type="checkbox" name="amenity" id="chair">
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                    <button type="submit"  class="edit-btn btn">EDIT VENUE</button>
+                </form>
+
+
+                
+
+
+                <form method="post" action="/update/delete" class="update-section">
+                    <div class="heading">DELETE VENUE</div>
+                    <div class="select-venue field">
+                        <label for="venue">Venue</label>
+
+                        <select class="venue" name="venue" id="venue">
+                            <% venues.forEach((venue)=>{ %>
+                                <option value=<%=venue._id%> > <%=venue.name%> </option> 
+                               <%})%>
+                        </select>
+                    </div>
+                    <button type="submit" class="delete-btn btn">DELETE VENUE</button>
+                </form>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+  </div>
+  <script src="/javascript/update.js"></script>
+</body>
+</html>

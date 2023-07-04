@@ -1,0 +1,36 @@
+
+<div class="left-section">
+    <div class="menu">
+        <i class="icon fa-solid fa-lg  fa-bars"></i>
+    </div>
+    <div class="root-icons">
+        <a href="/home"><i class="icon fa-solid fa-lg fa-house "></i></a>
+        <a href="/reservation"><i class="icon fa-solid fa-lg fa-box "></i></a>
+        <!-- <a href="/booking"><i class="icon fa-solid fa-lg fa-calendar-days active"></i></a> -->
+        <a href="/update"><i class="icon fa-solid fa-lg fa-file"></i></a>
+        <a href="/venues"><i class="icon fa-solid fa-lg fa-table"></i></a>
+        <a href="/message"><i class="icon fa-solid fa-lg fa-comment"></i></a>
+    </div>
+    <div class="mode">
+        <i class="icon fa-solid fa-lg hide fa-sun"></i>
+        <i class="icon fa-solid fa-lg  fa-moon"></i>
+    </div>
+</div>
+
+<div class="right-section">
+
+    <div class="nav">
+        <div class="title">Venue Ease</div>
+        <div class="nav-profile">
+        <div class="notification-bell"><i class="icon fa-sharp  fa-bell"></i></div>
+        <% if (typeof username !== 'undefined' ) { %>
+            <div class="profile-name"><%= username %></div>
+            <div class="profile-img"></div>
+            <a href="/logout">logout</a>
+        <% } %>
+        
+
+
+        </div>
+        
+    </div>

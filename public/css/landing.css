@@ -1,0 +1,84 @@
+
+.nav{
+    padding-top: 50px;
+    padding-left: 50px;
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+
+}
+a{
+    color: #021f50;
+    transition: .2s all ease-in-out;
+}
+
+:root {
+    --main-color: #302e2e; 
+  }
+
+body{
+    padding: 70px;
+    padding-top: 0;
+    background: #cdccdb;
+
+   
+    max-height: 100vh;
+    overflow: hidden;
+}
+.container{
+    display: flex;
+    padding-top: 50px;
+
+}
+.title.head{
+    line-height: 42px;
+    color:  #4c45aa;
+}
+.left {
+    width: 50%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    padding: 100px;
+    padding-left: 50px;
+    line-height: 26px;
+    height: 488px;
+}
+
+.para{
+    color:  #615f68 ;
+    font-size: 16px;
+}
+.right{
+    width: 50%;
+}
+.img-wrapper{
+    width: 100%;    
+    object-fit: cover;
+}
+.img-wrapper img{
+    width: 100%;
+}
+.left-section{
+    display: none;
+}
+.action{
+    font-size: 15px;
+    text-align: center;
+    background-color:  #6b64d6;
+    color: #fff;
+    width: 50%;
+}
+
+
+a:hover{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    transform: translateY(-5px);
+}

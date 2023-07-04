@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>venues</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/venues.css">
+</head>
+<body>
+  <div class="container">
+
+    <%- include('./temp.ejs') %>
+
+
+    
+        <div class="main-body">
+
+            <div class="venue-wrapper">
+                <!-- <div class="venue-options">
+                    <div class="search">
+                        <input placeholder="Serch" type="search">
+                    </div>
+                    <div class="capacity">
+                        <label for="">capacity</label>
+                        <input type="range">
+                    </div>
+                </div> -->
+                <div class="venue-list">
+                    <div class="venue-heading">Venues</div>
+                    <div class="venue-card-wrapper">
+
+                        <%    venues.forEach((venue)=>{  %>
+                            
+                            <div class="venue-card">
+                                <img src="/images/v.png" class="venue-card-img"></img>
+                                <div class="venue-card-name"><%= venue.name %></div>
+                                <div class="venue-card-para"><%= venue.desc %></div>
+                                <div class="venue-card-desc">
+                                    <div class="desc-l card-loc"><%= venue.location %></div>
+                                    <div class="desc-r card-capacity">capacity <span><%= venue.capacity %></span></div>
+                                    <div class="desc-l card-days"><%= venue.day %></div>
+                                    <div class="desc-r card-time"><%= venue.timing %></div>
+                                </div>
+                                <div class="amenities">
+                                    <%    venue.amenities.forEach((amenity)=>{  %>
+                                    <div class="amenity"><%= amenity %></div>
+                                    <%   }) %>
+                                </div>
+                                <a class="btn venue-btn" href="/booking/<%= venue._id %>">Reserve Now</a>
+                            </div>
+                            
+                            
+                            <%   }) %>
+
+                       
+
+                    </div>
+                </div>
+            </div>
+               
+        </div>
+
+    </div>
+
+
+  </div>
+</body>
+</html>

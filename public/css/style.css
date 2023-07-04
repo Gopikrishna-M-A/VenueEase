@@ -1,0 +1,146 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+*:focus{
+    outline: none;
+}
+html{
+    height: 100%;
+}
+body{
+    height: 100%;
+    font-size: 16px;
+}
+a,button{
+    cursor: pointer;
+    text-decoration: none;
+}
+.icon{
+    cursor: pointer;
+}
+
+.heading{
+    font-weight: 600;
+}
+.para{
+    font-weight: 300;
+}
+
+.heading.large{
+    font-size: 4vw; 
+}
+.heading.medium{
+    font-size: 2.4rem; 
+}
+.heading.small{
+    font-size: 1.8rem; 
+}
+.heading.esm{
+    font-size: 1.2rem; 
+}
+
+.white{
+    color: #fff;
+}
+.black{
+    color: #000;
+}
+.hide{
+    display: none;
+}
+.fa-lg.active{
+    color:#585858;
+}
+
+.container{
+    height: 764px;
+    display: flex;
+    overflow: hidden;
+}
+
+.left-section{
+    width: 7%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    box-shadow: 0px 4px 20px 4px rgba(0, 0, 0, 0.1);
+}
+.root-icons{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+.fa-lg{
+    color:#B8B8B8;
+}
+.right-section{
+    width: 93%;
+}
+.nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+  
+}
+.title{
+    font-size: 2.4rem;
+    font-family: 'Righteous', cursive;
+    color: #2d296a;
+}
+.nav-profile{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.profile-img{
+    width: 42px;
+    height: 42px;
+    background-color: #E8EBED;
+    border-radius: 50%;
+}
+.fa-bell ,.icon{
+    color: #a7a0ec;
+}
+
+
+
+.btn{
+    padding: .5rem .75rem;
+    border: 1px solid rgb(210, 210, 210);
+    border-radius: .4rem;
+}
+
+
+
+
+
+/* **********HOVER************* */
+
+.icon:hover{
+    color:#887ee8;
+}
+
+
+.coming-soon{
+    color: #ededed;
+    margin: auto 0;
+    text-align: center;
+    font-size: 8rem;
+}
+
+.btn:hover{
+    background-color:#cdccdb;
+}

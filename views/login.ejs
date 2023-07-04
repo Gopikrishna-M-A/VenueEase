@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <div class="container">
+
+        <div class="left-section">
+
+
+                <form action="/login" class="left-section-wrapper" method="post">
+
+                    <div class="heading medium">Hey,hello </div>
+                    <p class="para">Enter the information you entered while registering.</p>
+                    
+                    <div class="input-field first-field">
+                        <label for="email" class="email">Email</label>
+                        <input required type="text" name="email" id="email" class="email">
+                    </div>
+           
+                    <div class="input-field">
+                        <label for="password" class="password">Password</label>
+                        <input required type="text" name="password" id="password" class="password">
+                    </div>
+         
+    
+                    <div class="login-options">
+                        <div>   
+                            <label for="remember">Remember me</label>
+                            <input name="remember" id="remember" type="radio">
+                        </div>
+                        <div>
+                            <a>Forgot password?</a>
+                        </div>
+                    </div>
+
+                    <button class="submit-btn btn" type="submit">Login</button>
+
+                    <div class="login-line-wrapper">
+                        <hr class="login-line">
+                        <div class="login-or">or</div>
+                    </div>
+
+                    <button class="google-login-btn btn"><span class="fa-brands fa-google fa-lg"></span>Sign in with Google</button>
+
+                    <a class="switch-login" href="/signup">Don't have an account? <span class="switch-link">Sign up</span></a>
+
+                </form>
+      
+        </div>
+
+        <div class="right-section">
+            <div class="right-section-wrapper">
+                <div class="heading large white">Compare, and reserve your perfect college venue <span class="black">today!</span></div>
+                <div class="para white">True education teaches critical thinking & character.</div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

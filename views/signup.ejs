@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signup</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <div class="container">
+
+        <div class="left-section">
+
+
+                <form action="/signup" class="left-section-wrapper" method="post">
+
+                    <div class="heading medium">Hey,hello </div>
+                    <p class="para">Enter your information to register.</p>
+                    
+                    <div class="name-field first-field">
+                        <div class="input-field">
+                            <label for="fname" class="fname">First name</label>
+                            <input required type="text" name="fname" id="fname" class="fname">
+                        </div>
+                        <div class="input-field">
+                            <label for="lname" class="lname">last name</label>
+                            <input required type="text" name="lname" id="lname" class="lname">
+                        </div>
+                    </div>
+
+                    <div class="input-field">
+                        <label for="cid" class="cid">College ID</label>
+                        <input required type="text" name="cid" id="cid" class="cid">
+                    </div>
+                    <div class="input-field">
+                        <label for="email" class="email">Email</label>
+                        <input required type="text" name="email" id="email" class="email">
+                    </div>
+                    <div class="input-field">
+                        <label for="password" class="password">Password</label>
+                        <input required type="text" name="password" id="password" class="password">
+                    </div>
+                    <div class="input-field">
+                        <label for="role">Role</label>
+
+                        <select class="role" name="role" id="role">
+                          <option value="student">student</option>
+                          <option value="faculty">faculty</option>
+                        </select>
+                    </div>
+                    <div class="input-field">
+                        <label for="phone" class="phone">Phone no</label>
+                        <input required type="tel" name="phone" id="phone" class="phone">
+                    </div>
+
+                    <button class="submit-btn btn" type="submit">Sign up</button>
+
+                    <div class="login-line-wrapper">
+                        <hr class="login-line">
+                        <div class="login-or">or</div>
+                    </div>
+
+                    <button class="google-login-btn btn"><span class="fa-brands fa-google fa-lg"></span>Sign in with Google</button>
+
+                    <a class="switch-login" href="/login">Have an account? <span class="switch-link">Sign in</span></a>
+
+                </form>
+      
+        </div>
+
+        <div class="right-section">
+            <div class="right-section-wrapper">
+                <div class="heading large white">Compare, and reserve your perfect college venue <span class="black">today!</span></div>
+                <div class="para white">True education teaches critical thinking & character.</div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
