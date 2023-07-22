@@ -24,7 +24,7 @@ const app = express()
   console.log(Pass_Key);
   console.log(user_id);
   
-  const uri = `mongodb+srv://gopikrishna6003:${encodeURIComponent(Pass_Key)}@survey.0ijfdji.mongodb.net/venueEase`
+  const uri = `mongodb+srv://${user_id}:${encodeURIComponent(Pass_Key)}@survey.0ijfdji.mongodb.net/venueEase`
 
   
   console.log(uri);
