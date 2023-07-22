@@ -5,6 +5,9 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcrypt');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const saltRounds = 10;
 
@@ -18,12 +21,19 @@ const app = express()
   const Pass_Key = process.env.PASS_KEY;
   const user_id = process.env.USER_ID;
   
+  console.log(Pass_Key);
+  console.log(user_id);
   
-  
-  const URL = `mongodb+srv://${user_id}:${encodeURIComponent(Pass_Key)}@cluster0.sbpkrhp.mongodb.net/`;
+  const uri = `mongodb+srv://gopikrishna6003:${encodeURIComponent(Pass_Key)}@survey.0ijfdji.mongodb.net/venueEase`
 
+  
+  console.log(uri);
   mongoose.set("strictQuery", false);
-  mongoose.connect(URL, { useNewUrlParser: true });
+  mongoose.connect(uri, { useNewUrlParser: true,useUnifiedTopology: true, }).then(() => {
+    console.log('Connected to MongoDB successfully!');
+  }).catch((error) => {
+    console.error('Error connecting to MongoDB:', error);
+  });
 
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs')  
@@ -210,7 +220,12 @@ app.post("/signup",(req,res)=>{
                 phone:phone,
                 permissions:[]
             })
-            user.save()
+            user.save().then(()=>{
+              console.log('User saved successfully:', savedUser);
+            }).catch((error) => {
+              console.error('Error while saving user:', error);
+              
+            });
             console.log("encrypting sucessfull ....");
         }
         else
@@ -508,10 +523,11 @@ app.post('/cancelReservation', (req, res) => {
 
 //booking route
 
-app.get("/booking/:id",isLoggedIn,async (req,res)=>{
-
+app.get("/booking/:id", isLoggedIn, (req, res) => {
   const venueId = req.params.id; // Replace with the specific venue ID you want to query
-
+  console.log("---------------");
+  console.log(venueId)
+  // Find reservations for the given venueId
   Reservation.find({ venueId })
     .populate({
       path: 'userId',
@@ -527,12 +543,46 @@ app.get("/booking/:id",isLoggedIn,async (req,res)=>{
     })
     .exec()
     .then((reservations) => {
-      res.render("booking",{reservations, username: req.session.user.name })  
+      if (reservations.length === 0) {
+        // If no reservations are found for the venueId, retrieve the venue details separately
+        return Venue.findById(venueId).populate('venueAdmin').exec()
+          .then((venue) => {
+            // Construct the response with all values as null except for the venue details
+            const nullReservations = {
+              _id: null,
+              userId: null,
+              venueId: venue || null,
+              eventName: null,
+              eventDesc: null,
+              eventType: null,
+              dateTime: null,
+              status: null,
+              admin: null,
+              approvedAt: null,
+              rejectedAt: null,
+              rejectedreason: null,
+              createdAt: null,
+              updatedAt: null,
+            };
+            // Send the response to the view
+            console.log("1.",nullReservations);
+            res.render("booking", { reservations: [nullReservations], username: req.session.user.name });
+          });
+      } else {
+        // If reservations are found, send the populated reservations to the view
+        console.log("2.",reservations);
+        console.log("---------------");
+        res.render("booking", { reservations, username: req.session.user.name });
+      }
     })
     .catch((err) => {
       console.error('Failed to retrieve reservations:', err);
+      // Handle the error and respond accordingly
+      res.status(500).send("Failed to retrieve reservations.");
     });
-  
+});
+
+
   
   
 
@@ -548,7 +598,7 @@ app.get("/booking/:id",isLoggedIn,async (req,res)=>{
     //   })
 
 
-})
+
 app.post("/booking",async (req,res)=>{
 
 

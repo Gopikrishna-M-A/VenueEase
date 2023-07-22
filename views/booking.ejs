@@ -118,26 +118,27 @@
                     <div class="booking-right-body-day">
 
                       
-                        
-                        <% reservations.forEach(function(reservation) { %>
+                      <% reservations.forEach(function(reservation) { %>
+                        <% if (reservation.userId) { %>
                           <div class="right-body-card">
-
                             <div class="right-body-card-head <%= reservation.status %>"></div>
-
                             <div class="right-body-card-body">
-                                <p>Owner Name: <%= reservation.userId.name %></p>
-                                <p>Event Name: <%= reservation.eventName %></p>
-                                <p>Event Description: <%= reservation.eventDesc %></p>
-                                <% reservation.dateTime.forEach(function(time) { %>
-                                  <p> <%= time.startDate.toLocaleDateString([], { weekday: 'long', month: 'long', day: 'numeric' }) %><br>Timing: <%= time.startDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) %> - <%= time.endDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) %></p>
-                                <% }); %>
-                                <p>Event Type: <%= reservation.eventType %></p>
-                                <p>Event status: <%= reservation.status %></p>
-                                
+                              <p>Owner Name: <%= reservation.userId.name %></p>
+                              <p>Event Name: <%= reservation.eventName %></p>
+                              <p>Event Description: <%= reservation.eventDesc %></p>
+                              <% reservation.dateTime.forEach(function(time) { %>
+                                <p>
+                                  <%= time.startDate.toLocaleDateString([], { weekday: 'long', month: 'long', day: 'numeric' }) %><br>
+                                  Timing: <%= time.startDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) %> - <%= time.endDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) %>
+                                </p>
+                              <% }); %>
+                              <p>Event Type: <%= reservation.eventType %></p>
+                              <p>Event status: <%= reservation.status %></p>
                             </div>
-
                           </div>
-                        <% }); %>
+                        <% } %>
+                      <% }); %>
+                      
                         
                 
                       
