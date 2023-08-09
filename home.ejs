@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+  <div class="container">
+
+    <%- include('./temp.ejs') %>
+
+
+        <div class="main-body">
+
+
+            <!-- left -->
+
+            <div class="left">
+                <form class="search">
+                    <div class="row">
+                        <div class="date heading esm">Date</div>
+                        <div class="capacity heading esm" >Capacity</div>
+                        <div class="blank"></div>
+                    </div>
+                    <div class="row">
+                        <input type="date">
+                        <input type="number">
+                        <button class="searchBtn btn" type="submit">Search</button>
+                    </div>
+                    
+                </form>
+
+
+                <div class="available">
+                    <div class=" heading esm">Available</div>
+                    <div class="card-wrapper">
+                        <% available.forEach(function(venue) { %>
+                          <div class="card">
+                            <div class="card-img">
+                              <img src="/images/v.png" alt="">
+                            </div>
+                            <div class="card-name"><%= venue.name %></div>
+                            <div class="row">
+                              <div class="card-block"><%= venue.location %></div>
+                              <div class="card-capacityy">capacity: <%= venue.capacity %></div>
+                            </div>
+                            <a href="/booking/<%= venue._id %>" class="btn card-btn">Reserve</a>
+                          </div>
+                        <% }); %>
+                      </div>
+                      
+                </div>
+
+                <div class="row">
+                    <div class="row">
+                        <div class="hover popular bold">Most Popular</div>
+                        <div class="hover special"></div>
+                        <div class="hover nearMe"> </div>
+                    </div>
+                    <a href="/venues">View All</a>
+                </div>
+                
+                <div class="card-2-wrapper">
+                    <% popular.forEach(function(venue) { %>
+                      <div class="card-2">
+                        <div class="card-2-img">
+                          <img src="/images/c.png" alt="">
+                        </div>
+                        <div class="col">
+                          <div class="card-name"><%= venue.name %></div>
+                          <div class="card-block"><%= venue.location %></div>
+                        </div>
+                        <div class="col">
+                            <div class="card-capacityy">capacity: <%= venue.capacity %></div>
+                            <a href="/booking/<%= venue._id %>"  class="btn card-btn">Check</a>
+                        </div>
+                      </div>
+                    <% }); %>
+                  </div>
+                  
+
+            </div>
+
+            <!-- right -->
+
+            <div class="right">
+
+                <div class="upcoming heading esm">UpComing Events</div>
+                <div class="UpComing-img-wrapper">
+                    <img src="/images/poster.png" alt="">
+                </div>
+                <a class="booking-btn btn" href="/venues">Book a Venue</a>
+
+            </div>
+  
+        </div>
+
+    </div>
+
+
+  </div>
+  <script src="/javascript/script.js"></script>
+</body>
+</html>
