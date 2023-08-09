@@ -21,13 +21,12 @@ const app = express()
   const Pass_Key = process.env.PASS_KEY;
   const user_id = process.env.USER_ID;
   
-  console.log(Pass_Key);
-  console.log(user_id);
+
   
   const uri = `mongodb+srv://${user_id}:${encodeURIComponent(Pass_Key)}@survey.0ijfdji.mongodb.net/venueEase`
 
   
-  console.log(uri);
+
   mongoose.set("strictQuery", false);
   mongoose.connect(uri, { useNewUrlParser: true,useUnifiedTopology: true, }).then(() => {
     console.log('Connected to MongoDB successfully!');
@@ -143,7 +142,7 @@ const isLoggedIn = (req, res, next) => {
 // / route
 
 app.get("/",(req,res)=>{
-    res.render("landing")
+    res.render("login")
 })
 
 
